@@ -17,7 +17,7 @@ end
 get '/show_tasks' do 
     #get in sinatra show something
     Data = Sequel.connect('sqlite://todo.db')
-    @tasks = Data[:tasks].all
+    @tasks = Data[:tasks]
     erb :tasks 
 end
 
@@ -30,10 +30,14 @@ end
 
 put '/update_task' do
     #put in sinatra update somethig
+    Data = Sequel.connect('sqlite://todo.db')
+    Data[:tasks].where(:id => 5).update :description => "Atualizado pelo site", :complete => true
     "update task"
 end
 
 delete '/delete_task' do
     #delete in sinatra delete something
+    Data = Sequel.connect('sqlite://todo.db')
+    Data[:tasks].where(:id => 4).delete
     "Delete task"
 end
