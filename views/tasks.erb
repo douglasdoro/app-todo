@@ -1,7 +1,7 @@
 <h1>Tarefas</h1>
-<%=@tasks.all%>
+<%=@tasks%>
 <%@tasks.each do |task|%>
-    <p> <%=task[:description]%> </p>
+    <p><b><%=task[:id] %> </b> - <%=task[:description]%> </p>
 <%end%>
 <hr>
-<%=@tasks.all%>
+<%=@tasks%>
