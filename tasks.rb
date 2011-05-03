@@ -2,20 +2,12 @@
 require "sinatra" 
 load "task.rb"
 
-#cria a tabela no banco caso ela nao exista
-# unless Data.table_exists?('tasks')
-#    Data.create_table :tasks do
-#        primary_key :id
-#        String      :description
-#        Boolean     :complete
-#    end
-#end
 
 get '/' do
     erb :index 
 end
 
-get '/show_tasks' do 
+get '/tasks' do 
     #get in sinatra show something
     @tasks = Task.all
     erb :tasks 

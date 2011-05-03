@@ -1,0 +1,7 @@
+#tasks_not_complete{
+    border: 1px solid red;
+}
+
+#tasks_complete{
+    border: 1px solid black
+}
