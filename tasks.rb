@@ -21,6 +21,16 @@ get '/show_tasks' do
     erb :tasks 
 end
 
+get '/tasks_complete' do
+    @tasks = Task.where(:complete => true)
+    erb :tasks
+end 
+
+get '/tasks_not_complete' do
+    @tasks = Task.where(:complete => false)
+    erb :tasks 
+end
+
 post '/new_task' do
     #post in sinatra create something
     Task.insert(:description =>'Cortar a grama', :complete => false)

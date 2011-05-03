@@ -1,7 +1,0 @@
-require 'sequel'
-
-Sequel.connect('sqlite://todo.rb')
-
-class Task < Sequel::Model
-end
-

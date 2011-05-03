@@ -1,2 +1,0 @@
-require 'task'
-run Sinatra::Application
