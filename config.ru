@@ -1,3 +1,3 @@
-load 'tasks.rb'
+load 'app.rb'
 run Sinatra::Application
 

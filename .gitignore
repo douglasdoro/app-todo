@@ -2,4 +2,4 @@
 .*.swp
 .*.swn
 *.*~
-.*.DS_Store
+*.DS_Store
