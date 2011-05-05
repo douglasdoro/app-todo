@@ -34,3 +34,17 @@ end
 delete '/delete_task/:id' do
     Task.where(:id => params[:id]).delete
 end
+
+put '/done_task/:id' do
+    Task.where(:id => params[:id]).update :complete => true
+end
+
+put '/undone_task/:id' do
+    Task.where(:id => params[:id]).update :complete => false
+end
+
+
+
+
+
+
