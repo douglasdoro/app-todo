@@ -1,17 +1,24 @@
 <%@tasks.each do |task|%>
     <p>
-    <input type="checkbox"
-        <%="id='chk_#{task[:id]}'"%>
-        name=""
-        class=""
-        <%="itemid='#{task[:id]}'"%>
-        <%=task[:complete] ? 'checked' : ''%> 
-        onClick="updateTask(this);" />
+        <input type="checkbox"
+               <%="id='chk_#{task[:id]}'"%>
+               name=""
+               class=""
+               <%="itemid='#{task[:id]}'"%>
+               <%=task[:complete] ? 'checked' : ''%> 
+               onClick="managerTask(this);" />
         
-    <b>id:</b><%=task[:id] %> |
-    <b>desc.:</b><%=task[:description]%> |
-    <b>complete:</b><%=task[:complete]%></p>
+               <b>Tarefa: </b><%=task[:description]%>(<%=task[:id]%>)
+        <%#=task[:complete]%> 
+        <input type="button"
+               id="" 
+               class="" 
+               value="Deletar" 
+               <%="itemid='#{task[:id]}'"%>
+               onClick="deleteTask(this);" />
+     </p>
 <%end%>
+
 <script>
     $("p:even").css("background-color", "#bbbbff");
 </script>
