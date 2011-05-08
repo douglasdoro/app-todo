@@ -1,7 +1,38 @@
-#tasks_not_complete{
-    border: 1px solid red;
+body{
+    background-color: #FFFFFF;
+    margin: 0px;
+    font: bold 10px verdana, arial, tahoma, sans-serif;
 }
 
-#tasks_complete{
-    border: 1px solid black
+div#chess{
+    background-image: url('/images/chess.gif');
+    background-repeat: repeat-x;
+    height: 192px;
+    width: 100%;
+    margin: 0px;
+    border: 1px solid black;
+    position: absolute;
+    top: 200px;
+    z-index: -1;
+}
+
+div#content{
+    background: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    width: 760px;
+    height: 100%;
+    border: 1px solid black;
+}
+
+div#tasks_not_complete{
+    border: 1px solid red;
+    background: ;
+    width: 700px;
+}
+
+div#tasks_complete{
+    border: 1px solid black;
+    background: yellow;
+    width: 700px;
 }

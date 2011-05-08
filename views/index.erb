@@ -6,15 +6,20 @@
         <script language="JavaScript" type="text/javascript" src="/task.js"></script> 
     </head>
     <body>
-        <h3>Aplicação para gerênciar tarefas</h3>
-        <form>
-            <input type="text" name="" id="txt_new_task"/>
-            <input type="button" name="" id="btn_new_task" value="Nova tarefa"/>
-        </form>
-        <div id="tasks_not_complete">
+       <div id="content">
+           <h3>Tarefas</h3>
+           <label>
+               Nova tarefa:
+               <input type="text" name="" id="txt_new_task"/>
+           </label>    
+           <input type="button" name="" id="btn_new_task" value="Nova tarefa"/>
+           <br/>
+           <label>Pendentes:</label>
+           <div id="tasks_not_complete"></div>
+           <label>Ultimas tarefas concluídas:</label> 
+           <div id="tasks_complete"></div>
         </div>
-        <div id="tasks_complete">
-        </div>
+        <div id="chess"></div>
     </body>
 </html>
 

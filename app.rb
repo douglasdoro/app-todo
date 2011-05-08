@@ -1,4 +1,3 @@
-#! /Users/douglasfontes/.rvm/rubies/ruby-1.9.2-p180/bin/ruby 
 require "sinatra" 
 load "task.rb"
 
@@ -12,23 +11,26 @@ get '/tasks' do
 end
 
 get '/tasks_complete' do
-    @tasks = Task.where(:complete => true)
+    @tasks = Task.where(:complete => true).order(:date.desc).limit(10)
     erb :tasks
 end 
 
 get '/tasks_not_complete' do
-    @tasks = Task.where(:complete => false)
+    @tasks = Task.where(:complete => false).order(:date.desc).limit(20)
     erb :tasks 
 end
 
 post '/new_task/:description' do
-    Task.insert(:description => params[:description], :complete => false)
+    Task.insert(:description => params[:description],
+                :complete    => false,
+                :date        => Time.now)
 end
 
 put '/update_task/:id/:description/:complete' do
     Task.where(:id => params[:id]).update(
         :description => params[:description],
-        :complete => params[:complete])
+        :complete    => params[:complete],
+        :date        => Time.now)
 end
 
 delete '/delete_task/:id' do
@@ -36,15 +38,14 @@ delete '/delete_task/:id' do
 end
 
 put '/done_task/:id' do
-    Task.where(:id => params[:id]).update :complete => true
+    Task.where(:id => params[:id]).update(
+        :complete => true,
+        :date     => Time.now) 
 end
 
 put '/undone_task/:id' do
-    Task.where(:id => params[:id]).update :complete => false
+    Task.where(:id => params[:id]).update(
+        :complete => false,
+        :date     => Time.now)
 end
-
-
-
-
-
 

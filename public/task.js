@@ -1,15 +1,15 @@
 var host = 'http://localhost:9292'
 
-$(document).ready(function(){
-        showNotCompleteTasks();
-        showCompleteTasks() ;
+$(function(){
+    showNotCompleteTasks();
+    showCompleteTasks() ;
         
-        $("#btn_new_task").click(
-                function(){
-                    var task = $("#txt_new_task").val();
-                    newTask(task);  
-                    $('body').load('/');
-        });     
+    $("#btn_new_task").click(
+           function(){
+                var task = $("#txt_new_task").val();
+                newTask(task);  
+                //$('body').load('/');
+    });     
 }); 
 
 function newTask(task){
@@ -17,9 +17,14 @@ function newTask(task){
         type: 'POST',
         url: host+'/new_task/'+task,
         statusCode:{
-            404:function(){alert('Erro ao criar nova tarefa - statuscode 400');}
+            404:function(){alert('Erro ao criar nova tarefa - statuscode 400');},
+            500:function(){alert('Erro ao criar nova tarefa - statuscode 500');}
             //,200:function(){alert('Tarefa criada com sucesso - 200');}
-            } 
+            },
+        success:function(){
+            showNotCompleteTasks();
+            $("#txt_new_task").val('');
+        }  
     });
 }
 

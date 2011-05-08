@@ -1,5 +1,5 @@
 <%@tasks.each do |task|%>
-    <p>
+    <div>
         <input type="checkbox"
                <%="id='chk_#{task[:id]}'"%>
                name=""
@@ -8,17 +8,19 @@
                <%=task[:complete] ? 'checked' : ''%> 
                onClick="managerTask(this);" />
         
-               <b>Tarefa: </b><%=task[:description]%>(<%=task[:id]%>)
+               <%=task[:description]%>(<%=task[:id]%>)
         <%#=task[:complete]%> 
         <input type="button"
                id="" 
                class="" 
                value="Deletar" 
                <%="itemid='#{task[:id]}'"%>
-               onClick="deleteTask(this);" />
-     </p>
+               onClick="deleteTask(this);return false;" />
+              <br/> 
+              <hr/>         
+    </div>
 <%end%>
 
 <script>
-    $("p:even").css("background-color", "#bbbbff");
+    //$("p:even").css("background-color", "#bbbbff");
 </script>
