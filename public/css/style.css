@@ -1,38 +1,72 @@
-body{
-    background-color: #FFFFFF;
+html, body, div, span, applet, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td{
     margin: 0px;
-    font: bold 10px verdana, arial, tahoma, sans-serif;
+    padding: 0px;
+    border: 0px;
+    outline: 0px;
 }
 
-div#chess{
-    background-image: url('/images/chess.gif');
-    background-repeat: repeat-x;
-    height: 192px;
-    width: 100%;
-    margin: 0px;
-    border: 1px solid black;
-    position: absolute;
-    top: 200px;
-    z-index: -1;
+body{
+    background-image: url('/images/background.gif');
+    background-repeat: repeat;
+    font-family: Verdana, Arial, Tahoma, sans-serif;
 }
 
 div#content{
     background: #FFFFFF;
     margin-left: auto;
     margin-right: auto;
-    width: 760px;
-    height: 100%;
+    width: 720px;
+    height: 560px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #DEFED0;
+}
+
+#div_new_task{
+    width: 680px;
+    height: 30px;
+    margin: 10px 9px 10px 9px;
+    padding: 10px;
+}
+
+#div_pen{
+    background-image: url('/images/pen.jpg');
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+
+#div_new_task_in{
+    width: 620px;
+    height: 30px;
+    float: left;
+    margin-left: 20px;
+}
+
+#txt_new_task{
+    width: 400px;
+    height: 18px;
+}
+
+.tasks{
+    width: 680px;
+    height: 30px;
+    margin: 10px 9px 10px 9px;
+    padding: 10px;
     border: 1px solid black;
 }
 
 div#tasks_not_complete{
-    border: 1px solid red;
-    background: ;
-    width: 700px;
+    border: 0px solid red;
+    width: 100%;
 }
 
 div#tasks_complete{
-    border: 1px solid black;
-    background: yellow;
-    width: 700px;
+    border: 0px solid black;
+    width: 100%;
 }

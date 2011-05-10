@@ -6,20 +6,18 @@
         <script language="JavaScript" type="text/javascript" src="/task.js"></script> 
     </head>
     <body>
-       <div id="content">
+        <div id="content">
            <h3>Tarefas</h3>
-           <label>
-               Nova tarefa:
-               <input type="text" name="" id="txt_new_task"/>
-           </label>    
-           <input type="button" name="" id="btn_new_task" value="Nova tarefa"/>
-           <br/>
-           <label>Pendentes:</label>
+           <div id="div_new_task" >
+               <div id="div_pen"></div>
+               <div id="div_new_task_in">
+                   <input type="text" id="txt_new_task" autocomplete="off"/>
+                   <input type="button" id="btn_new_task" value="Adicionar Tarefa"/>
+               </div> 
+           </div>
            <div id="tasks_not_complete"></div>
-           <label>Ultimas tarefas concluídas:</label> 
            <div id="tasks_complete"></div>
         </div>
-        <div id="chess"></div>
     </body>
 </html>
 
