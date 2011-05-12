@@ -1,16 +1,36 @@
-var host = 'http://localhost:9292'
+var host = 'http://localhost:9292';
+var textTask= 'Digite uma nova tarefa aqui.';
 
 $(function(){
+    fillTaskText();
     showNotCompleteTasks();
     showCompleteTasks() ;
-        
+    
     $("#btn_new_task").click(
            function(){
                 var task = $("#txt_new_task").val();
-                newTask(task);  
-                //$('body').load('/');
-    });     
+                if (task == '' || task == textTask)
+                {
+                    alert('preenche a bagaça')
+                    }
+                else
+                {
+                    newTask(task);  
+                    $("#txt_new_task").focus();
+                }    
+           });     
 }); 
+
+function fillTaskText(){
+    if ($("#txt_new_task").val() == '')
+    {
+        $("#txt_new_task").val(textTask);    
+    }
+}
+
+function clearField(field){
+    $(field).val('');
+}
 
 function newTask(task){
     $.ajax({

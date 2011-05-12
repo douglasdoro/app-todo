@@ -12,45 +12,67 @@ body{
     background-image: url('/images/background.gif');
     background-repeat: repeat;
     font-family: Verdana, Arial, Tahoma, sans-serif;
+    text-align: center;
 }
 
 div#content{
     background: #FFFFFF;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
     width: 720px;
-    height: 560px;
+    min-height: 560px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 20px;
     border: 1px solid #DEFED0;
 }
 
-#div_new_task{
-    width: 680px;
-    height: 30px;
+div#new_task{
+    width: 700px;
+    height: 36px;
     margin: 10px 9px 10px 9px;
-    padding: 10px;
-}
-
-#div_pen{
     background-image: url('/images/pen.jpg');
     background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
+    background-position: 10px 1px;
+}
+
+div#left_border{
+    background-image: url('/images/left-txt.gif');
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 34px;
+    margin-left: 60px;
     float: left;
 }
 
-#div_new_task_in{
-    width: 620px;
-    height: 30px;
+div#middle_border{
+    width: 482px;
+    height: 34px;
+    background-image: url('/images/middle-txt.gif');
+    background-repeat: repeat-x;
     float: left;
-    margin-left: 20px;
 }
 
-#txt_new_task{
-    width: 400px;
-    height: 18px;
+div#middle_border input{
+    width: 482px;
+    height: 26px;
+    font-size: 18px;
+    margin-top: 4px;
+    border: none;
+}
+
+div#right_border{
+    background-image: url('/images/right-txt.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    width: 140px;
+    height: 34px;
+    float: left;
+}
+
+div#right_border input{
+    margin: 8px 0px 0px 30px;
 }
 
 .tasks{

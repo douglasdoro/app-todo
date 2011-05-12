@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Tarefas</title>
+        <link rel="icon" type="image/png" href="/images/favicon.ico"/>
         <link href="/css/style.css" rel="stylesheet" type="text/css" />
         <script language="JavaScript" type="text/javascript" src="/jquery-1.5.2.js"/></script>
         <script language="JavaScript" type="text/javascript" src="/task.js"></script> 
@@ -8,12 +9,14 @@
     <body>
         <div id="content">
            <h3>Tarefas</h3>
-           <div id="div_new_task" >
-               <div id="div_pen"></div>
-               <div id="div_new_task_in">
-                   <input type="text" id="txt_new_task" autocomplete="off"/>
-                   <input type="button" id="btn_new_task" value="Adicionar Tarefa"/>
+           <div id="new_task" >
+               <div id="left_border">&nbsp;</div>
+               <div id="middle_border">
+                   <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onFocus="clearField(this)"/>
                </div> 
+               <div id="right_border"> 
+                   <input type="button" id="btn_new_task" value="Adicionar Tarefa"/>
+               </div>
            </div>
            <div id="tasks_not_complete"></div>
            <div id="tasks_complete"></div>
