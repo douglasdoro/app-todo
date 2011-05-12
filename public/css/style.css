@@ -32,49 +32,51 @@ div#new_task{
     width: 700px;
     height: 36px;
     margin: 10px 9px 10px 9px;
+}
+
+#txt_new_task{
+    display: block;
+    float: left;
+    width: 610px;
+    height: 26px;
+    background-color: #fff;
     background-image: url('/images/pen.jpg');
     background-repeat: no-repeat;
-    background-position: 10px 1px;
+    padding: 4px 4px 4px 35px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #ccc;
+    
 }
 
-div#left_border{
-    background-image: url('/images/left-txt.gif');
-    background-repeat: no-repeat;
-    width: 11px;
-    height: 34px;
-    margin-left: 60px;
+#txt_new_task:focus{
+    color: #000;
+    border: 1px solid #000;
+}
+
+#btn_new_task{
+    display: block;
     float: left;
-}
-
-div#middle_border{
-    width: 482px;
-    height: 34px;
-    background-image: url('/images/middle-txt.gif');
-    background-repeat: repeat-x;
-    float: left;
-}
-
-div#middle_border input{
-    width: 482px;
+    background-color: #fff;
+    width: 80px;
     height: 26px;
-    font-size: 18px;
-    margin-top: 4px;
-    border: none;
+    margin-top: 5px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    color: #ccc;
 }
 
-div#right_border{
-    background-image: url('/images/right-txt.gif');
-    background-repeat: no-repeat;
-    background-position: left;
-    width: 140px;
-    height: 34px;
-    float: left;
+#btn_new_task:focus{
+    border: 1px solid #000;
+    color: #000;
 }
 
-div#right_border input{
-    margin: 8px 0px 0px 30px;
+#btn_new_task:hover{
+    border: 1px solid #000;
+    color: #000;
+    cursor: hand;
 }
-
 .tasks{
     width: 680px;
     height: 30px;

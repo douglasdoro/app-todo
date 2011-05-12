@@ -10,13 +10,8 @@
         <div id="content">
            <h3>Tarefas</h3>
            <div id="new_task" >
-               <div id="left_border">&nbsp;</div>
-               <div id="middle_border">
-                   <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onFocus="clearField(this)"/>
-               </div> 
-               <div id="right_border"> 
-                   <input type="button" id="btn_new_task" value="Adicionar Tarefa"/>
-               </div>
+               <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onFocus="clearField(this)"/>
+               <input type="button" id="btn_new_task" value="Adicionar"/>
            </div>
            <div id="tasks_not_complete"></div>
            <div id="tasks_complete"></div>

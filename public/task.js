@@ -4,15 +4,22 @@ var textTask= 'Digite uma nova tarefa aqui.';
 $(function(){
     fillTaskText();
     showNotCompleteTasks();
-    showCompleteTasks() ;
-    
+    showCompleteTasks();
+
+    $("#txt_new_task").keypress(function(event){
+        if (event.which == '13')
+        {
+            $("#btn_new_task").click();
+        }
+     });
+
     $("#btn_new_task").click(
            function(){
                 var task = $("#txt_new_task").val();
                 if (task == '' || task == textTask)
                 {
                     alert('preenche a bagaça')
-                    }
+                }
                 else
                 {
                     newTask(task);  
