@@ -9,17 +9,57 @@ table, caption, tbody, tfoot, thead, tr, th, td{
 }
 
 body{
+    background-color: #BD8455;
     background-image: url('/images/background.gif');
     background-repeat: repeat;
     font-family: Verdana, Arial, Tahoma, sans-serif;
-    text-align: center;
+    font-size: 12px;
+    text-align: center; /*bug ie6*/
+}
+
+input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 26px;
+    color: #ccc;
+}
+
+input:hover{
+    border: 1px solid #000; 
+    cursor: hand;
+    color: #000;
+}
+
+input:focus{
+    border: 1px solid #ddd;
+    color: #000;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+input[type=checkbox] + label {
+    background: url('/images/unchecked.png') 0 0px no-repeat;
+    height: 18px;
+    width: 18px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+                
+input[type=checkbox]:checked + label {
+    background: url('/images/checked.png') 0 0px no-repeat;
+    height: 18px;
+    width: 18px;
+    display:inline-block;
+    padding: 0 0 0 0px;
 }
 
 div#content{
     background: #FFFFFF;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: left; /*bug ie6*/
     width: 720px;
     min-height: 560px;
     margin-top: 20px;
@@ -38,59 +78,132 @@ div#new_task{
     display: block;
     float: left;
     width: 610px;
-    height: 26px;
-    background-color: #fff;
     background-image: url('/images/pen.jpg');
     background-repeat: no-repeat;
     padding: 4px 4px 4px 35px;
     margin-top: 5px;
-    border: 1px solid #ccc;
     font-size: 16px;
-    color: #ccc;
-    
-}
-
-#txt_new_task:focus{
-    color: #000;
-    border: 1px solid #000;
 }
 
 #btn_new_task{
     display: block;
     float: left;
-    background-color: #fff;
     width: 80px;
-    height: 26px;
     margin-top: 5px;
     margin-left: 10px;
+}
+
+.tasks{
+    width: 690px;
+    height: 30px;
+    margin: 10px 9px 10px 9px;
+    padding: 5px;
     border: 1px solid #ccc;
+    position: relative;
+}
+
+.tasks:hover .options_task{
+    display: block;
+}
+
+.options_task{
+    display: none;
+    width: 110px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.options_task .btn_delete{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.options_task .btn_edit{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 2px;
+    right: 60px;
+}
+
+.task_complete{
+    text-decoration: line-through;
+    color: #048A00;
+}
+
+#options{
+    width: 690px;
+    margin: 0px 9px;
+    padding: 5px;
+    text-align: right;
+    position: relative;
+    border: 1px solid black;
+    background-color: red; 
     color: #ccc;
+
 }
 
-#btn_new_task:focus{
-    border: 1px solid #000;
-    color: #000;
+#options span{
+    text-align: center;
+    margin: 0px;
+    padding: 5px;
 }
 
-#btn_new_task:hover{
-    border: 1px solid #000;
+#options span:hover{
     color: #000;
     cursor: hand;
 }
-.tasks{
-    width: 680px;
-    height: 30px;
-    margin: 10px 9px 10px 9px;
-    padding: 10px;
-    border: 1px solid black;
+
+#options #all{
+    display: none;
 }
 
-div#tasks_not_complete{
-    border: 0px solid red;
-    width: 100%;
+#options h3{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 4px 10px;
+}   
+
+.edit_task{
+    display: none;
+    width: 700px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #000;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-div#tasks_complete{
-    border: 0px solid black;
-    width: 100%;
+.edit_task .btn_edit_ok{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 2px;
+    right: 70px;
+}
+
+.edit_task .btn_edit_cancel{
+    display: block;
+    width: 60px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}   
+
+.txt_edit_task{
+    display: block;
+    width: 565px;
+    background-image: url('/images/pen.jpg');
+    background-repeat: no-repeat;
+    padding: 4px 4px 4px 35px;
+    margin: 2px 5px;
+    font-size: 12px;
 }

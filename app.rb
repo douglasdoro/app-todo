@@ -1,4 +1,5 @@
 require "sinatra" 
+require "json"
 load "task.rb"
 
 get '/' do
@@ -7,7 +8,7 @@ end
 
 get '/tasks' do 
     @tasks = Task.all
-    erb :tasks 
+    erb :tasks
 end
 
 get '/tasks_complete' do
@@ -21,15 +22,18 @@ get '/tasks_not_complete' do
 end
 
 post '/new_task/:description' do
-    Task.insert(:description => params[:description],
-                :complete    => false,
-                :date        => Time.now)
+    task = Task.where(:id =>
+        Task.insert(:description => params[:description],
+                    :complete    => false,
+                    :date        => Time.now)).first
+     
+    content_type :json
+    task.values.to_json
 end
 
-put '/update_task/:id/:description/:complete' do
+put '/update_task/:id/:description' do
     Task.where(:id => params[:id]).update(
         :description => params[:description],
-        :complete    => params[:complete],
         :date        => Time.now)
 end
 

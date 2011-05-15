@@ -8,13 +8,18 @@
     </head>
     <body>
         <div id="content">
-           <h3>Tarefas</h3>
+           <h1>Tarefas</h1>
            <div id="new_task" >
                <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onFocus="clearField(this)"/>
                <input type="button" id="btn_new_task" value="Adicionar"/>
            </div>
-           <div id="tasks_not_complete"></div>
-           <div id="tasks_complete"></div>
+           <div id="options">
+               <span id="done">Encerradas</span>
+               <span id="undone">Pendentes</span>
+               <span id="all">Todas</span>
+               <h3></h3>
+           </div>
+           <div id="tasks"></div>
         </div>
     </body>
 </html>
