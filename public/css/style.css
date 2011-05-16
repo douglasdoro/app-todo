@@ -23,7 +23,7 @@ body{
 input {
     background-color: #fff;
     border: 1px solid #999;
-    height: 16px;
+    height: 18px;
     color: #999;
     letter-spacing: 1px;
 }
@@ -168,18 +168,24 @@ div.options_task{
 
 div.options_task .btn_delete{
     display: block;
-    width: 50px;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
     position: absolute;
-    top: 1px;
-    right: 2px;
+    top: 3px;
+    right: 5px;
 }
 
 div.options_task .btn_edit{
     display: block;
-    width: 50px;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
     position: absolute;
-    top: 1px;
-    right: 60px;
+    top: 3px;
+    right: 30px;
 }
 
 span.task_complete{
@@ -203,24 +209,24 @@ div.edit_task .btn_edit_ok{
     display: block;
     width: 50px;
     position: absolute;
-    top: 2px;
-    right: 70px;
+    top: 3px;
+    right: 60px;
 }
 
 div.edit_task .btn_edit_cancel{
     display: block;
-    width: 60px;
+    width: 50px;
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 3px;
+    right: 5px;
 }   
 
 input.txt_edit_task{
     display: block;
-    width: 565px;
-    background-image: url('/images/pen.jpg');
+    width: 580px;
+    background-image: url('/images/pen2.jpg');
     background-repeat: no-repeat;
-    padding: 4px 4px 4px 35px;
-    margin: 2px 5px;
+    padding: 4px 4px 4px 25px;
+    margin: 3px 5px;
     font-size: 12px;
 }

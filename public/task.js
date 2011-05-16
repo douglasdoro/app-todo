@@ -91,8 +91,8 @@ function appendTask(data){
         	"<label for='cb_"+data.id+"'/>" +
         	"<span id='span_"+data.id+"'>"+data.description+"</span>" +
         	"<div class='options_task'>" +
-   	        	"<input type='button' class='btn_edit' value='Editar' itemid='"+data.id+"' onclick='showFormToEditTask(this);return false;'/>" +
-   	        	"<input type='button' class='btn_delete' value='Deletar' itemid='"+data.id+"' onclick='deleteTask(this);return false;'/>" +
+   	        	"<input type='image' src='/images/edit.png' class='btn_edit' itemid='"+data.id+"' onclick='showFormToEditTask(this);return false;'/>" +
+   	        	"<input type='image' src='/images/trash.png' class='btn_delete' itemid='"+data.id+"' onclick='deleteTask(this);return false;'/>" +
         	"</div>" +
             "<div id='div_edit_task_"+data.id+"' class='edit_task'>" +
                 "<input type='text' id='txt_edit_task_"+data.id+"' itemid='"+data.id+"' class='txt_edit_task' value=''/>" +

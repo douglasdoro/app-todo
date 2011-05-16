@@ -12,14 +12,14 @@
         </span>
        
         <div class="options_task">
-            <input type="button"
+            <input type="image"
+                   src="/images/edit.png"
                    class="btn_edit"
-                   value="Editar" 
                    <%="itemid='#{task[:id]}'"%>
                    onClick="showFormToEditTask(this);return false;" />
-            <input type="button"
+            <input type="image"
+                   src="/images/trash.png"
                    class="btn_delete"
-                   value="Deletar" 
                    <%="itemid='#{task[:id]}'"%>
                    onClick="deleteTask(this);return false;" />
         </div>
@@ -36,7 +36,7 @@
                    onClick="updateTask(this);"/>                
              <input type="button"
                    class="btn_edit_cancel"
-                   value="Cancelar"
+                   value="Voltar"
                    <%="itemid='#{task[:id]}'"%>
                    onClick="hiddenFormOfEditTask(this);return false;"/>
         </div>
