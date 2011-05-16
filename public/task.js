@@ -67,19 +67,21 @@ function clearField(field){
     $(field).val('');
 }
 
+function warning(){
+    $('#alert').fadeIn().delay(5000).fadeOut();
+}
+
 function newTask(task){
     $.ajax({
         type: 'POST',
         url: host+'/new_task/'+task,
         dataType: 'json',
-        statusCode: {
-                404:function(){alert('Erro ao criar nova tarefa - statuscode 400');},
-                500:function(){alert('Erro ao criar nova tarefa - statuscode 500');}
-                //,200:function(){alert('Tarefa criada com sucesso - 200');}
-            },
         success: function(data){
                 $("#txt_new_task").val('');
                 appendTask(data);
+            },
+        error: function(){
+                warning();
             }  
     });
 }
@@ -111,12 +113,11 @@ function deleteTask(objImput){
         type: 'DELETE', 
         url: host+'/delete_task/'+task,
         //beforeSend: function(){alert('isso')},
-        statusCode: {
-            //404:function(){alert("Falha ao deletar - statuscode 400");},
-            //200:function(){alert("Deletado com sucesso - statuscode 200");}
-            },
         success:function(){
             $('#cb_'+task).parent('div').fadeOut('slow');
+        },
+        error: function(){
+            warning();
         }
     });
 }
@@ -137,12 +138,11 @@ function doneTask(task){
      $.ajax({
         type: 'PUT',
         url: host+'/done_task/'+task,
-        statusCode:{
-            404:function(){alert('Erro ao atualizar 400');}, 
-            //200:function(){alert('Atualizado com sucesso 200');}
-            },
         success:function(){
             $('#span_'+task).addClass('task_complete');    
+        },
+        error: function(){
+            warning();
         } 
     });
 }
@@ -151,13 +151,12 @@ function undoneTask(task){
      $.ajax({
         type: 'PUT',
         url: host+'/undone_task/'+task,
-        statusCode:{
-            404:function(){alert('Erro ao atualizar 400');}, 
-            //200:function(){alert('Atualizado com sucesso 200');}
-            },
-            success:function(){
+        success:function(){
                 $('#span_'+task).removeClass('task_complete'); 
-            } 
+        },
+        error: function(){
+            warning();
+        } 
     });
 }
 
@@ -204,13 +203,12 @@ function updateTask(element){
     $.ajax({
         type: 'PUT',
         url: host+'/update_task/'+taskId+'/'+description,
-        statusCode:{
-            404:function(){alert('Erro ao atualizar 400');}, 
-            // 200:function(){alert('Atualizado com sucesso 200');}
-            },
         success: function(){
             $('#span_'+taskId).text($.trim($('#txt_edit_task_'+taskId).val()));
                 hiddenFormOfEditTask(element);    
-            } 
+            },
+        error: function(){
+            warning();
+        } 
     });
 }

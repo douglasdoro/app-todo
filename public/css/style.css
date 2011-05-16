@@ -72,6 +72,23 @@ div#content{
     margin-bottom: 10px;
     padding: 20px;
     border: 1px solid #DEFED0;
+    position: relative;
+}
+
+div#alert{
+    display: none;
+    width: 400px;
+    min-height: 10px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -200px;
+    padding: 5px;
+    border: 1px solid #ff3333;
+    background-color: #ffcccc;
+    text-align: center;
+    color: #ff3333;
+    font-weight: bold;
 }
 
 div#new_task{
