@@ -101,58 +101,7 @@ input#btn_new_task{
     margin-left: 10px;
 }
 
-.tasks{
-    width: 690px;
-    height: 20px;
-    margin: 10px 9px 10px 9px;
-    padding: 0 5px;
-    position: relative;
-}
-
-.tasks:hover{
-    background-color: #CCF5EB;
-}
-
-.tasks:hover .options_task{
-    display: block;
-}
-
-.tasks span{
-    position: absolute;
-    top: 3px;
-}
-
-.options_task{
-    display: none;
-    width: 110px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.options_task .btn_delete{
-    display: block;
-    width: 50px;
-    position: absolute;
-    top: 1px;
-    right: 2px;
-}
-
-.options_task .btn_edit{
-    display: block;
-    width: 50px;
-    position: absolute;
-    top: 1px;
-    right: 60px;
-}
-
-.task_complete{
-    text-decoration: line-through;
-    color: #666666;
-}
-
-#options{
+div#options{
     width: 690px;
     margin: 0px 9px;
     padding: 5px;
@@ -163,41 +112,94 @@ input#btn_new_task{
 
 }
 
-#options span{
+div#options span{
     text-align: center;
     margin: 0px;
     padding: 5px;
 }
 
-#options span:hover{
+div#options span:hover{
     color: #666;
     cursor: hand;
 }
 
-#options #all{
+div#options #all{
     display: none;
 }
 
-#options h3{
+div#options h3{
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     margin: 4px 10px;
     color: #666;
-}   
+}
 
-.edit_task{
+div.tasks{
+    width: 690px;
+    height: 22px;
+    margin: 10px 9px 10px 9px;
+    padding: 0 5px;
+    position: relative;
+}
+
+div.tasks:hover{
+    background-color: #CCF5EB;
+}
+
+div.tasks:hover .options_task{
+    display: block;
+}
+
+div.tasks span{
+    position: absolute;
+    top: 3px;
+}
+
+div.options_task{
+    display: none;
+    width: 110px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+div.options_task .btn_delete{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 1px;
+    right: 2px;
+}
+
+div.options_task .btn_edit{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 1px;
+    right: 60px;
+}
+
+span.task_complete{
+    text-decoration: line-through;
+    color: #666666;
+}
+
+   
+
+div.edit_task{
     display: none;
     width: 700px;
-    height: 20px;
+    height: 24px;
     background-color: #CCF5EB;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.edit_task .btn_edit_ok{
+div.edit_task .btn_edit_ok{
     display: block;
     width: 50px;
     position: absolute;
@@ -205,7 +207,7 @@ input#btn_new_task{
     right: 70px;
 }
 
-.edit_task .btn_edit_cancel{
+div.edit_task .btn_edit_cancel{
     display: block;
     width: 60px;
     position: absolute;
@@ -213,7 +215,7 @@ input#btn_new_task{
     right: 2px;
 }   
 
-.txt_edit_task{
+input.txt_edit_task{
     display: block;
     width: 565px;
     background-image: url('/images/pen.jpg');
