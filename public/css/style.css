@@ -14,25 +14,29 @@ body{
     background-repeat: repeat;
     font-family: Verdana, Arial, Tahoma, sans-serif;
     font-size: 12px;
+    color: #666;
     text-align: center; /*bug ie6*/
+    direction:ltl;
+    letter-spacing: 1px;
 }
 
 input {
     background-color: #fff;
-    border: 1px solid #ccc;
-    height: 26px;
-    color: #ccc;
+    border: 1px solid #999;
+    height: 16px;
+    color: #999;
+    letter-spacing: 1px;
 }
 
 input:hover{
-    border: 1px solid #000; 
+    border: 1px solid #666666;
     cursor: hand;
-    color: #000;
+    color: #666666;
 }
 
 input:focus{
-    border: 1px solid #ddd;
-    color: #000;
+    border: 1px solid #666666;
+    color: #666666;
 }
 
 input[type=checkbox]{
@@ -45,6 +49,7 @@ input[type=checkbox] + label {
     width: 18px;
     display:inline-block;
     padding: 0 0 0 0px;
+    cursor: hand;
 }
                 
 input[type=checkbox]:checked + label {
@@ -53,10 +58,11 @@ input[type=checkbox]:checked + label {
     width: 18px;
     display:inline-block;
     padding: 0 0 0 0px;
+    cursor: hand;
 }
 
 div#content{
-    background: #FFFFFF;
+    background: #fff;
     margin-left: auto;
     margin-right: auto;
     text-align: left; /*bug ie6*/
@@ -74,10 +80,11 @@ div#new_task{
     margin: 10px 9px 10px 9px;
 }
 
-#txt_new_task{
+input#txt_new_task{
     display: block;
     float: left;
     width: 610px;
+    height: 26px;
     background-image: url('/images/pen.jpg');
     background-repeat: no-repeat;
     padding: 4px 4px 4px 35px;
@@ -85,31 +92,40 @@ div#new_task{
     font-size: 16px;
 }
 
-#btn_new_task{
+input#btn_new_task{
     display: block;
     float: left;
     width: 80px;
+    height: 26;
     margin-top: 5px;
     margin-left: 10px;
 }
 
 .tasks{
     width: 690px;
-    height: 30px;
+    height: 20px;
     margin: 10px 9px 10px 9px;
-    padding: 5px;
-    border: 1px solid #ccc;
+    padding: 0 5px;
     position: relative;
+}
+
+.tasks:hover{
+    background-color: #CCF5EB;
 }
 
 .tasks:hover .options_task{
     display: block;
 }
 
+.tasks span{
+    position: absolute;
+    top: 3px;
+}
+
 .options_task{
     display: none;
     width: 110px;
-    height: 30px;
+    height: 20px;
     position: absolute;
     top: 0;
     right: 0;
@@ -119,7 +135,7 @@ div#new_task{
     display: block;
     width: 50px;
     position: absolute;
-    top: 2px;
+    top: 1px;
     right: 2px;
 }
 
@@ -127,13 +143,13 @@ div#new_task{
     display: block;
     width: 50px;
     position: absolute;
-    top: 2px;
+    top: 1px;
     right: 60px;
 }
 
 .task_complete{
     text-decoration: line-through;
-    color: #048A00;
+    color: #666666;
 }
 
 #options{
@@ -142,9 +158,8 @@ div#new_task{
     padding: 5px;
     text-align: right;
     position: relative;
-    border: 1px solid black;
-    background-color: red; 
-    color: #ccc;
+    background-color: #fceee0; 
+    color: #999;
 
 }
 
@@ -155,7 +170,7 @@ div#new_task{
 }
 
 #options span:hover{
-    color: #000;
+    color: #666;
     cursor: hand;
 }
 
@@ -169,14 +184,14 @@ div#new_task{
     top: 0;
     left: 0;
     margin: 4px 10px;
+    color: #666;
 }   
 
 .edit_task{
     display: none;
     width: 700px;
-    height: 40px;
-    background-color: #fff;
-    border: 1px solid #000;
+    height: 20px;
+    background-color: #CCF5EB;
     position: absolute;
     top: 0;
     left: 0;

@@ -8,7 +8,7 @@
         <label <%="for='cb_#{task[:id]}'"%>></label>       
 
         <span <%="id='span_#{task[:id]}'"%> <%=task[:complete] ? "class='task_complete'" : '' %>>
-               <%=task[:description]%>(<%=task[:id]%>)
+               <%=task[:description]%>
         </span>
        
         <div class="options_task">

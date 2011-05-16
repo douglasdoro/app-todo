@@ -89,7 +89,7 @@ function appendTask(data){
         "<div id='div_"+data.id+"'class='tasks' style='display:none' >" +
    	    	"<input type='checkbox' id='cb_"+data.id+"' itemid='"+data.id+"' onclick='managerTask(this);'/>" +
         	"<label for='cb_"+data.id+"'/>" +
-        	"<span id='span_"+data.id+"'>"+data.description+" ("+data.id+")</span>" +
+        	"<span id='span_"+data.id+"'>"+data.description+"</span>" +
         	"<div class='options_task'>" +
    	        	"<input type='button' class='btn_edit' value='Editar' itemid='"+data.id+"' onclick='showFormToEditTask(this);return false;'/>" +
    	        	"<input type='button' class='btn_delete' value='Deletar' itemid='"+data.id+"' onclick='deleteTask(this);return false;'/>" +
