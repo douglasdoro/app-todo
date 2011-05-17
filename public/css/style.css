@@ -91,6 +91,17 @@ div#alert{
     font-weight: bold;
 }
 
+div#loader{
+    display: none;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    margin-left: -25;
+    background-image: url('/images/loader.gif');
+}
+
 div#new_task{
     width: 700px;
     height: 36px;

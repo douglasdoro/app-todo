@@ -3,7 +3,7 @@ var textTask= 'Digite uma nova tarefa aqui.';
 
 $(function(){
     fillTaskText();
-    showAllTasks();
+    showTasks(host+'/tasks');
 
     $("#txt_new_task").keypress(function(event){
         if (event.which == '13')
@@ -27,7 +27,7 @@ $(function(){
            });
     
     $('#options #done').click(function(){
-           showCompleteTasks();
+            showTasks(host+'/tasks_complete');         
             $('#options #done').css('display', 'none');
             $('#options #undone').css('display','inline');
             $('#options #all').css('display','inline');
@@ -37,7 +37,7 @@ $(function(){
      });
    
     $('#options #undone').click(function(){
-           showNotCompleteTasks()         
+           showTasks(host+'/tasks_not_complete');         
            $('#options #undone').css('display', 'none');
            $('#options #done').css('display','inline');
            $('#options #all').css('display','inline');
@@ -47,7 +47,7 @@ $(function(){
      });
 
     $('#options #all').click(function(){
-           showAllTasks();          
+           showTasks(host+'/tasks');         
            $('#options #all').css('display', 'none');
            $('#options #undone').css('display','inline');
            $('#options #done').css('display','inline');
@@ -69,6 +69,14 @@ function clearField(field){
 
 function warning(){
     $('#alert').fadeIn().delay(5000).fadeOut();
+}
+
+function showAjaxLoader(){
+    $('#loader').show();
+}
+
+function hiddenAjaxLoader(){
+    $('#loader').hide();
 }
 
 function newTask(task){
@@ -112,7 +120,6 @@ function deleteTask(objImput){
     $.ajax({
         type: 'DELETE', 
         url: host+'/delete_task/'+task,
-        //beforeSend: function(){alert('isso')},
         success:function(){
             $('#cb_'+task).parent('div').fadeOut('slow');
         },
@@ -160,28 +167,17 @@ function undoneTask(task){
     });
 }
 
-function showNotCompleteTasks(){
-    $.get(host+'/tasks_not_complete',
-        function(data){
-             $('#tasks').empty();  
-             $('#tasks').append(data);
-         });
-}
-
-function showCompleteTasks(){
-    $.get(host+'/tasks_complete',
-        function(data){
-             $('#tasks').empty();
-             $('#tasks').append(data);
-         });
-}
-
-function showAllTasks(){
-    $.get(host+'/tasks',
-            function(data){
-                $('#tasks').empty();
-                $('#tasks').append(data);
-            });
+function showTasks(url){
+    $.ajax({
+            type: 'GET',
+            url: url,
+            beforeSend: function(){showAjaxLoader();},
+            success: function(data){
+                   hiddenAjaxLoader();
+                   $('#tasks').empty();  
+                   $('#tasks').append(data);
+            }
+    });
 }
 
 function showFormToEditTask(element){
