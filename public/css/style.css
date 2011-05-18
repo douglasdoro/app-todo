@@ -1,19 +1,8 @@
-html, body, div, span, applet, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td{
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-    outline: 0px;
-}
+@import url('reset.css');
 
 body{
-    background-color: #BD8455;
-    background-image: url('/images/background.gif');
-    background-repeat: repeat;
-    font-family: Verdana, Arial, Tahoma, sans-serif;
-    font-size: 12px;
+    background: #BD8455 url('/images/background.gif') repeat;
+    font: 12px Verdana, Arial, Tahoma, sans-serif;
     color: #666;
     text-align: center; /*bug ie6*/
     direction:ltl;
@@ -29,14 +18,14 @@ input {
 }
 
 input:hover{
-    border: 1px solid #666666;
+    border: 1px solid #666;
     cursor: hand;
-    color: #666666;
+    color: #666;
 }
 
 input:focus{
-    border: 1px solid #666666;
-    color: #666666;
+    border: 1px solid #666;
+    color: #666;
 }
 
 input[type=checkbox]{
@@ -102,6 +91,16 @@ div#loader{
     background-image: url('/images/loader.gif');
 }
 
+div#no_task{
+    width: 300px;
+    min-height: 10px;
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
+}
+
 div#new_task{
     width: 700px;
     height: 36px;
@@ -113,8 +112,7 @@ input#txt_new_task{
     float: left;
     width: 610px;
     height: 26px;
-    background-image: url('/images/pen.jpg');
-    background-repeat: no-repeat;
+    background: url('/images/pen.jpg') no-repeat;
     padding: 4px 4px 4px 35px;
     margin-top: 5px;
     font-size: 16px;
@@ -221,8 +219,6 @@ span.task_complete{
     color: #666666;
 }
 
-   
-
 div.edit_task{
     display: none;
     width: 700px;
@@ -252,8 +248,7 @@ div.edit_task .btn_edit_cancel{
 input.txt_edit_task{
     display: block;
     width: 580px;
-    background-image: url('/images/pen2.jpg');
-    background-repeat: no-repeat;
+    background-image: url('/images/pen2.jpg') no-repeat;
     padding: 4px 4px 4px 25px;
     margin: 3px 5px;
     font-size: 12px;

@@ -42,3 +42,6 @@
         </div>
    </div>
 <%end%>
+<%if @tasks.empty?%>
+    <div id="no_task">Não há Nenhuma tarefa no momento.</div>  
+<%end%>
