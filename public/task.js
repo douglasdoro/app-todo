@@ -1,5 +1,6 @@
 var host = 'http://localhost:9292';
 var textTask= 'Digite uma nova tarefa aqui.';
+var errorCall= "Ocorreu um erro. Por favor, tente novamente.";
 
 $(function(){
     fillTaskText();
@@ -17,13 +18,13 @@ $(function(){
                 var task = $("#txt_new_task").val();
                 if (task == '' || task == textTask)
                 {
-                    alert('preenche a bagaça')
+                    warning('Informe uma tarefa.');
                 }
                 else
                 {
                     newTask(task);  
-                    $("#txt_new_task").focus();
                 }    
+                $("#txt_new_task").focus();
            });
     
     $('#options #done').click(function(){
@@ -67,8 +68,8 @@ function clearField(field){
     $(field).val('');
 }
 
-function warning(){
-    $('#alert').fadeIn().delay(5000).fadeOut();
+function warning(error){
+    $('#alert').empty().append(error).fadeIn().delay(5000).fadeOut();
 }
 
 function showAjaxLoader(){
@@ -89,7 +90,7 @@ function newTask(task){
                 appendTask(data);
             },
         error: function(){
-                warning();
+                warning(errorCall);
             }  
     });
 }
@@ -124,7 +125,7 @@ function deleteTask(objImput){
             $('#cb_'+task).parent('div').fadeOut('slow');
         },
         error: function(){
-            warning();
+            warning(errorCall);
         }
     });
 }
@@ -149,7 +150,7 @@ function doneTask(task){
             $('#span_'+task).addClass('task_complete');    
         },
         error: function(){
-            warning();
+            warning(errorCall);
         } 
     });
 }
@@ -162,7 +163,7 @@ function undoneTask(task){
                 $('#span_'+task).removeClass('task_complete'); 
         },
         error: function(){
-            warning();
+            warning(errorCall);
         } 
     });
 }
@@ -204,7 +205,7 @@ function updateTask(element){
                 hiddenFormOfEditTask(element);    
             },
         error: function(){
-            warning();
+            warning(errorCall);
         } 
     });
 }
