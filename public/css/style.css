@@ -248,7 +248,7 @@ div.edit_task .btn_edit_cancel{
 input.txt_edit_task{
     display: block;
     width: 580px;
-    background-image: url('/images/pen2.jpg') no-repeat;
+    background: #fff url('/images/pen2.jpg') no-repeat;
     padding: 4px 4px 4px 25px;
     margin: 3px 5px;
     font-size: 12px;
