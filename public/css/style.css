@@ -17,13 +17,14 @@ input {
     letter-spacing: 1px;
 }
 
-input:hover{
+input:hover {
     border: 1px solid #666;
     cursor: hand;
     color: #666;
 }
 
-input:focus{
+input:focus {
+    outline: 0px;
     border: 1px solid #666;
     color: #666;
 }
