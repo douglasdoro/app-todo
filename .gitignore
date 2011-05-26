@@ -4,5 +4,7 @@
 .*.swm
 *.*~
 *.DS_Store
-*.db
+*/*.db
 *~
+db/todo.db
+todo.db
