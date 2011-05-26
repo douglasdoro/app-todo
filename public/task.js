@@ -1,6 +1,3 @@
-//var host = 'http://localhost:9292';
-var host = 'http://tarefas.heroku.com';
-
 var textTask= 'Digite uma nova tarefa aqui.';
 var errorCall= "Ocorreu um erro. Por favor, tente novamente.";
 

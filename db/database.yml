@@ -1,0 +1,8 @@
+production: 
+  encoding: unicode
+  adapter: postgresql
+  username: gtpyymiurr
+  port: 5432
+  host: ec2-174-129-2-127.compute-1.amazonaws.com
+  database: gtpyymiu
+  password: m6G7LTSoFTs1hWXa936w
