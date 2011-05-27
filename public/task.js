@@ -85,8 +85,12 @@ function newTask(task){
         url: host+'/new_task/'+task,
         dataType: 'json',
         success: function(data){
-                $("#txt_new_task").val('');
-                appendTask(data);
+                clearField("#txt_new_task");
+                if($("#no_task:visible")[0])
+                {
+                     $("#no_task").hide();
+                }
+                 appendTask(data);
             },
         error: function(){
                 warning(errorCall);
@@ -122,6 +126,10 @@ function deleteTask(objImput){
         url: host+'/delete_task/'+task,
         success:function(){
             $('#cb_'+task).parent('div').fadeOut('slow');
+            if ($(".tasks:visible").size() == 1) 
+            {
+                $("#no_task").show();
+            }
         },
         error: function(){
             warning(errorCall);
@@ -171,11 +179,20 @@ function showTasks(url){
     $.ajax({
             type: 'GET',
             url: url,
-            beforeSend: function(){showAjaxLoader();},
+            beforeSend: function(){ 
+                    $('#tasks').empty();
+                    showAjaxLoader();
+                },
             success: function(data){
                    hiddenAjaxLoader();
-                   $('#tasks').empty();  
-                   $('#tasks').append(data);
+                   if (data == '')
+                   {
+                       $('#tasks').append("<div id='no_task'>Não há Nenhuma tarefa no momento.</div>");
+                   }
+                   else
+                   { 
+                       $('#tasks').append(data);
+                   }
             }
     });
 }
