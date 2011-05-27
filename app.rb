@@ -1,10 +1,13 @@
 require "sinatra" 
 require "json"
-load "task.rb"
+require 'sequel'
+ 
+Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/todo.sqlite3')
 
-get '/' do
-    erb :index 
+class Task < Sequel::Model
 end
+
+get('/') {erb :index}
 
 get '/tasks' do 
     @tasks = Task.all
