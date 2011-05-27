@@ -6,6 +6,6 @@ configure do
 end
 
 configure :production do
-    set :host_url, "var host = 'hhttp://tarefas.heroku.com';"
+    set :host_url, "var host = 'http://tarefas.heroku.com';"
 end
 
