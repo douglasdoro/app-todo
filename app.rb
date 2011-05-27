@@ -2,7 +2,7 @@ require "sinatra"
 require "json"
 require 'sequel'
  
-Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/todo.sqlite3')
+Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/tasks.sqlite3')
 
 class Task < Sequel::Model
 end
