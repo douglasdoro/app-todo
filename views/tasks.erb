@@ -7,19 +7,19 @@
                onClick="managerTask(this);" />
         <label <%="for='cb_#{task[:id]}'"%>></label>       
 
-        <span <%="id='span_#{task[:id]}'"%> <%=task[:complete] ? "class='task_complete'" : '' %>>
-               <%=task[:description]%>
-        </span>
+        <span <%="id='span_#{task[:id]}'"%> <%=task[:complete] ? "class='task_complete'" : '' %>><%=task[:description]%></span>
        
         <div class="options_task">
             <input type="image"
                    src="/images/edit.png"
                    class="btn_edit"
+                   alt="Editar"
                    <%="itemid='#{task[:id]}'"%>
                    onClick="showFormToEditTask(this);return false;" />
             <input type="image"
                    src="/images/trash.png"
                    class="btn_delete"
+                   alt="Deletar"
                    <%="itemid='#{task[:id]}'"%>
                    onClick="deleteTask(this);return false;" />
         </div>

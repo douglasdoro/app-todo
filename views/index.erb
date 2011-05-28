@@ -1,3 +1,4 @@
+<!DOCTYPE html >
 <html>
     <head>
         <title>Tarefas</title>
@@ -11,21 +12,32 @@
     </head>
     <body>
         <div id="content">
-           <h1>Tarefas</h1>
-           <div id="alert"></div>
+           <div id="header">
+               <h2>Tarefas</h2>
+               <menu>
+                   <ul>
+                   <li id="all">todas</li>
+                   <li id="undone">pendentes</li>
+                   <li id="done">concluídas</li>
+                   <!--<li id="">atrazadas</li>-->
+                   </ul>
+               </menu>
+           </div>
+           <hr/>
+          <div id="alert"></div>
            <div id="loader"></div>
+           <hr/>
            <div id="new_task" >
                <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onFocus="clearField(this)"/>
                <input type="button" id="btn_new_task" value="Adicionar"/>
            </div>
-           <div id="options">
-               <span id="done">Encerradas</span>
-               <span id="undone">Pendentes</span>
-               <span id="all">Todas</span>
-               <h3></h3>
-           </div>
+           <hr/>
            <div id="tasks"></div>
-        </div>
+       </div>
+       <hr/>
+       <div id="footer">
+               <p><a href="#" title="Ajuda">Ajuda</a> | © 2011 <a href="http://douglasdoro.wordpress.com" title="Blog http://douglasdoro.wordpress.com" target="_blank">@douglasdoro</a> todos os direitos reservados. </p>
+       </div>
     </body>
 </html>
 

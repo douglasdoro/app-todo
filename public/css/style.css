@@ -1,13 +1,17 @@
 @import url('reset.css');
 
-body{
+/* global */
+
+body {
     background: #BD8455 url('/images/background.gif') repeat;
     font: 12px Verdana, Arial, Tahoma, sans-serif;
     color: #666;
     text-align: center; /*bug ie6*/
-    direction:ltl;
+    direction: ltl;
     letter-spacing: 1px;
 }
+
+hr { display:none; }
 
 input {
     background-color: #fff;
@@ -29,59 +33,223 @@ input:focus {
     color: #666;
 }
 
-input[type=checkbox]{
+/* content */
+
+#content{
+    background: #fff;
+    margin: 20px auto 10px auto;
+    text-align: left; /*bug ie6*/
+    width: 760px;
+    min-height: 560px;
+    padding: 0 0px 20px 0;
+    border: 1px solid #666;
+    position: relative;
+    box-shadow: 4px 4px 3px #522;
+}
+
+/* box header */
+
+#header {
+    height: 60px;
+    background: #e33f1e;
+}
+
+#header h2 {
+    float: left;
+    margin: 15px 0 0 20px;
+    font: bold 28px Verdana, Arial, Sans-serif;
+    color: #fff;    
+}
+
+#header menu {
+    margin: 20px;
+    float: right;
+    color: #fff;
+}
+
+#header menu li {
+    float: left;
+    margin: 5px;
+    font: 14px Helvetica, Arial, Sans-serif;
+}
+
+#header menu li:hover{
+    color: #999;
+    cursor: hand;
+}
+
+/* box new task */
+
+#new_task{
+    width: 760px;
+    height: 60px;
+    margin-bottom: 5px;
+    background: url('/images/shadow.png');
+}
+
+input#txt_new_task{
+    display: block;
+    float: left;
+    width: 718px;
+    height: 26px;
+    background: url('/images/pen.png') no-repeat;
+    padding: 4px 4px 4px 35px;
+    margin: 15px 0 0 20px;
+    font-size: 16px;
+}
+
+input#btn_new_task{
+    background: none;
+    /*display: block;*/
+    display:none;
+    float: left;
+    width: 80px;
+    height: 26;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+/* box tasks */
+
+input[type=checkbox] {
     display: none;
 }
 
 input[type=checkbox] + label {
-    background: url('/images/unchecked.png') 0 0px no-repeat;
-    height: 18px;
-    width: 18px;
-    display:inline-block;
-    padding: 0 0 0 0px;
+    background: url('/images/unchecked.png') 5px 1px no-repeat;
+    height: 19px;
+    width: 21px;
+    display: inline-block;
     cursor: hand;
 }
                 
 input[type=checkbox]:checked + label {
-    background: url('/images/checked.png') 0 0px no-repeat;
-    height: 18px;
-    width: 18px;
-    display:inline-block;
-    padding: 0 0 0 0px;
+    background: url('/images/checked.png') 5 1px no-repeat;
+    height: 19px;
+    width: 21px;
+    display: inline-block;
     cursor: hand;
 }
 
-div#content{
-    background: #fff;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left; /*bug ie6*/
-    width: 720px;
-    min-height: 560px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 20px;
-    border: 1px solid #DEFED0;
+.tasks{
+    width: 708px;
+    height: 24px;
+    margin: 0px 25px;
     position: relative;
+    border: 1px solid #fff;
 }
 
-div#alert{
+.tasks:hover {
+    background-color: #F3E8DE;
+    height: 24px;
+    border: 1px solid #c38b5a;
+}
+
+.tasks:hover .options_task{
+    display: block;
+}
+
+.tasks span{
+    position: absolute;
+    top: 4px;
+    margin-left: 5px;
+}
+
+.options_task{
+    display: none;
+    width: 110px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.options_task .btn_delete{
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+
+.options_task .btn_edit{
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 3px;
+    right: 25px;
+}
+
+img {
+    border: none;
+}
+
+span.task_complete{
+    text-decoration: line-through;
+    color: #666666;
+}
+
+.edit_task{
+    display: none;
+    width: 708px;
+    height: 24px;
+    background-color: #F3E8DE;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.edit_task .btn_edit_ok{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 3px;
+    right: 60px;
+}
+
+.edit_task .btn_edit_cancel{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}   
+
+input.txt_edit_task{
+    display: block;
+    width: 588px;
+    background: #fff url('/images/pen2.jpg') no-repeat;
+    padding: 4px 4px 4px 25px;
+    margin: 3px 5px;
+    font-size: 12px;
+}
+
+/* messages, errors and load */
+
+#alert{
     display: none;
     width: 400px;
     min-height: 10px;
     position: absolute;
-    top: 10px;
+    top: -10px;
     left: 50%;
     margin-left: -200px;
     padding: 5px;
-    border: 1px solid #ff3333;
-    background-color: #ffcccc;
+    border: 2px solid #ff3333;
+    border-radius: 4px;
+    background: #fff;
     text-align: center;
     color: #ff3333;
     font-weight: bold;
 }
 
-div#loader{
+#loader{
     display: none;
     width: 50px;
     height: 50px;
@@ -92,7 +260,7 @@ div#loader{
     background-image: url('/images/loader.gif');
 }
 
-div#no_task{
+#no_task{
     width: 300px;
     min-height: 10px;
     position: absolute;
@@ -102,155 +270,11 @@ div#no_task{
     text-align: center;
 }
 
-div#new_task{
-    width: 700px;
-    height: 36px;
-    margin: 10px 9px 10px 9px;
+/* footer */
+
+#footer a {
+    text-decoration: none;
+    text-shadow: rgba(0, 0, 0, 0.699219) 1px 1px 3px;
+    color: #fff;
 }
 
-input#txt_new_task{
-    display: block;
-    float: left;
-    width: 610px;
-    height: 26px;
-    background: url('/images/pen.jpg') no-repeat;
-    padding: 4px 4px 4px 35px;
-    margin-top: 5px;
-    font-size: 16px;
-}
-
-input#btn_new_task{
-    display: block;
-    float: left;
-    width: 80px;
-    height: 26;
-    margin-top: 5px;
-    margin-left: 10px;
-}
-
-div#options{
-    width: 690px;
-    margin: 0px 9px;
-    padding: 5px;
-    text-align: right;
-    position: relative;
-    background-color: #fceee0; 
-    color: #999;
-
-}
-
-div#options span{
-    text-align: center;
-    margin: 0px;
-    padding: 5px;
-}
-
-div#options span:hover{
-    color: #666;
-    cursor: hand;
-}
-
-div#options #all{
-    display: none;
-}
-
-div#options h3{
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 4px 10px;
-    color: #666;
-}
-
-div.tasks{
-    width: 690px;
-    height: 22px;
-    margin: 10px 9px 10px 9px;
-    padding: 0 5px;
-    position: relative;
-}
-
-div.tasks:hover{
-    background-color: #CCF5EB;
-}
-
-div.tasks:hover .options_task{
-    display: block;
-}
-
-div.tasks span{
-    position: absolute;
-    top: 3px;
-}
-
-div.options_task{
-    display: none;
-    width: 110px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-div.options_task .btn_delete{
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: none;
-    border: none;
-    position: absolute;
-    top: 3px;
-    right: 5px;
-}
-
-div.options_task .btn_edit{
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: none;
-    border: none;
-    position: absolute;
-    top: 3px;
-    right: 30px;
-}
-
-span.task_complete{
-    text-decoration: line-through;
-    color: #666666;
-}
-
-div.edit_task{
-    display: none;
-    width: 700px;
-    height: 24px;
-    background-color: #CCF5EB;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-div.edit_task .btn_edit_ok{
-    display: block;
-    width: 50px;
-    position: absolute;
-    top: 3px;
-    right: 60px;
-}
-
-div.edit_task .btn_edit_cancel{
-    display: block;
-    width: 50px;
-    position: absolute;
-    top: 3px;
-    right: 5px;
-}   
-
-input.txt_edit_task{
-    display: block;
-    width: 580px;
-    background: #fff url('/images/pen2.jpg') no-repeat;
-    padding: 4px 4px 4px 25px;
-    margin: 3px 5px;
-    font-size: 12px;
-}

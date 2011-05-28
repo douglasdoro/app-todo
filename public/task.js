@@ -1,5 +1,5 @@
-var textTask= 'Digite uma nova tarefa aqui.';
-var errorCall= "Ocorreu um erro. Por favor, tente novamente.";
+var textTask= 'Digite uma nova tarefa aqui e aperte enter.';
+var errorCall= "Opa!. Por favor, tente novamente.";
 
 $(function(){
     fillTaskText();
@@ -26,33 +26,16 @@ $(function(){
                 $("#txt_new_task").focus();
            });
     
-    $('#options #done').click(function(){
+    $('#done').click(function(){
             showTasks(host+'/tasks_complete');         
-            $('#options #done').css('display', 'none');
-            $('#options #undone').css('display','inline');
-            $('#options #all').css('display','inline');
-            
-            $('#options h3').empty();
-            $('#options h3').append($('#options #done').text());
      });
    
-    $('#options #undone').click(function(){
+    $('#undone').click(function(){
            showTasks(host+'/tasks_not_complete');         
-           $('#options #undone').css('display', 'none');
-           $('#options #done').css('display','inline');
-           $('#options #all').css('display','inline');
- 
-           $('#options h3').empty();
-           $('#options h3').append($('#options #undone').text());
      });
 
-    $('#options #all').click(function(){
+    $('#all').click(function(){
            showTasks(host+'/tasks');         
-           $('#options #all').css('display', 'none');
-           $('#options #undone').css('display','inline');
-           $('#options #done').css('display','inline');
- 
-           $('#options h3').empty();
     });
 }); 
 
@@ -103,7 +86,7 @@ function appendTask(data){
         "<div id='div_"+data.id+"'class='tasks' style='display:none' >" +
    	    	"<input type='checkbox' id='cb_"+data.id+"' itemid='"+data.id+"' onclick='managerTask(this);'/>" +
         	"<label for='cb_"+data.id+"'/>" +
-        	"<span id='span_"+data.id+"'>"+data.description+"</span>" +
+        	"<span id='span_"+data.id+"'>&nbsp;"+data.description+"</span>" +
         	"<div class='options_task'>" +
    	        	"<input type='image' src='/images/edit.png' class='btn_edit' itemid='"+data.id+"' onclick='showFormToEditTask(this);return false;'/>" +
    	        	"<input type='image' src='/images/trash.png' class='btn_delete' itemid='"+data.id+"' onclick='deleteTask(this);return false;'/>" +
