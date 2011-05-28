@@ -70,10 +70,11 @@ input:focus {
 #header menu li {
     float: left;
     margin: 5px;
+    list-style: none;
     font: 14px Helvetica, Arial, Sans-serif;
 }
 
-#header menu li:hover{
+#header menu li:hover {
     color: #999;
     cursor: hand;
 }
@@ -84,13 +85,13 @@ input:focus {
     width: 760px;
     height: 60px;
     margin-bottom: 5px;
-    background: url('/images/shadow.png');
+    background: url('/images/shadow.png') repeat-x;
 }
 
-input#txt_new_task{
+#txt_new_task{
     display: block;
     float: left;
-    width: 718px;
+    width: 708px;
     height: 26px;
     background: url('/images/pen.png') no-repeat;
     padding: 4px 4px 4px 35px;
@@ -98,7 +99,7 @@ input#txt_new_task{
     font-size: 16px;
 }
 
-input#btn_new_task{
+#btn_new_task{
     background: none;
     /*display: block;*/
     display:none;
@@ -186,10 +187,6 @@ input[type=checkbox]:checked + label {
     right: 25px;
 }
 
-img {
-    border: none;
-}
-
 span.task_complete{
     text-decoration: line-through;
     color: #666666;
@@ -221,7 +218,7 @@ span.task_complete{
     right: 5px;
 }   
 
-input.txt_edit_task{
+.txt_edit_task{
     display: block;
     width: 588px;
     background: #fff url('/images/pen2.jpg') no-repeat;
@@ -275,6 +272,6 @@ input.txt_edit_task{
 #footer a {
     text-decoration: none;
     text-shadow: rgba(0, 0, 0, 0.699219) 1px 1px 3px;
-    color: #fff;
+    color: #ebebeb;
 }
 
