@@ -3,7 +3,7 @@ var errorCall= "Opa!. Por favor, tente novamente.";
 
 $(function(){
     fillTaskText();
-    showTasks(host+'/tasks');
+    showTasks('/tasks');
 
     $("#txt_new_task").keypress(function(event){
         if (event.which == '13')
@@ -27,15 +27,15 @@ $(function(){
            });
     
     $('#done').click(function(){
-            showTasks(host+'/tasks_complete');         
+            showTasks('/tasks_complete');         
      });
    
     $('#undone').click(function(){
-           showTasks(host+'/tasks_not_complete');         
+           showTasks('/tasks_not_complete');         
      });
 
     $('#all').click(function(){
-           showTasks(host+'/tasks');         
+           showTasks('/tasks');         
     });
 }); 
 
@@ -65,7 +65,7 @@ function hiddenAjaxLoader(){
 function newTask(task){
     $.ajax({
         type: 'POST',
-        url: host+'/new_task/'+task,
+        url: '/new_task/'+task,
         dataType: 'json',
         success: function(data){
                 clearField("#txt_new_task");
@@ -106,7 +106,7 @@ function deleteTask(objImput){
     task = $(objImput).attr("itemid");
     $.ajax({
         type: 'DELETE', 
-        url: host+'/delete_task/'+task,
+        url: '/delete_task/'+task,
         success:function(){
             $('#cb_'+task).parent('div').fadeOut('slow');
             if ($(".tasks:visible").size() == 1) 
@@ -135,7 +135,7 @@ function managerTask(objCheck){
 function doneTask(task){
      $.ajax({
         type: 'PUT',
-        url: host+'/done_task/'+task,
+        url: '/done_task/'+task,
         success:function(){
             $('#span_'+task).addClass('task_complete');    
         },
@@ -148,7 +148,7 @@ function doneTask(task){
 function undoneTask(task){
      $.ajax({
         type: 'PUT',
-        url: host+'/undone_task/'+task,
+        url: '/undone_task/'+task,
         success:function(){
                 $('#span_'+task).removeClass('task_complete'); 
         },
@@ -198,7 +198,7 @@ function updateTask(element){
     
     $.ajax({
         type: 'PUT',
-        url: host+'/update_task/'+taskId+'/'+description,
+        url: '/update_task/'+taskId+'/'+description,
         success: function(){
             $('#span_'+taskId).text($.trim($('#txt_edit_task_'+taskId).val()));
                 hiddenFormOfEditTask(element);    
