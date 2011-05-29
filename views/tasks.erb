@@ -3,8 +3,8 @@
         <input type="checkbox"
                <%="id='cb_#{task[:id]}'"%>
                <%="itemid='#{task[:id]}'"%>
-               <%=task[:complete] ? 'checked' : ''%> 
-               onClick="managerTask(this);" />
+               <%=task[:complete] ? "checked='checked'" : ''%> 
+               onclick="managerTask(this);" />
         <label <%="for='cb_#{task[:id]}'"%>></label>       
 
         <span <%="id='span_#{task[:id]}'"%> <%=task[:complete] ? "class='task_complete'" : '' %>><%=task[:description]%></span>
@@ -15,13 +15,13 @@
                    class="btn_edit"
                    alt="Editar"
                    <%="itemid='#{task[:id]}'"%>
-                   onClick="showFormToEditTask(this);return false;" />
+                   onclick="showFormToEditTask(this);return false;" />
             <input type="image"
                    src="/images/trash.png"
                    class="btn_delete"
                    alt="Deletar"
                    <%="itemid='#{task[:id]}'"%>
-                   onClick="deleteTask(this);return false;" />
+                   onclick="deleteTask(this);return false;" />
         </div>
         <div id="div_edit_task_<%=task[:id]%>" class="edit_task">
             <input type="text"
@@ -33,12 +33,12 @@
                    class="btn_edit_ok"
                    value="ok"
                    <%="itemid='#{task[:id]}'"%>
-                   onClick="updateTask(this);"/>                
+                   onclick="updateTask(this);"/>                
              <input type="button"
                    class="btn_edit_cancel"
                    value="Voltar"
                    <%="itemid='#{task[:id]}'"%>
-                   onClick="hiddenFormOfEditTask(this);return false;"/>
+                   onclick="hiddenFormOfEditTask(this);return false;"/>
         </div>
    </div>
 <%end%>

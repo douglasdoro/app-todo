@@ -1,39 +1,9 @@
-<html>
-    <head>
-        <title>Tarefas</title>
-        <link rel="icon" type="image/png" href="/images/favicon.ico"/>
-        <link href="/css/style.css" rel="stylesheet" type="text/css" />
-        <script language="JavaScript" type="text/javascript" src="/jquery-1.5.2.js"/></script>
-        <script language="JavaScript" type="text/javascript" src="/task.js"></script> 
-    </head>
-    <body>
-        <div id="content">
-           <div id="header">
-               <h2>Tarefas</h2>
-               <menu>
-                   <ul>
-                   <li id="all">todas</li>
-                   <li id="undone">pendentes</li>
-                   <li id="done">concluídas</li>
-                   </ul>
-               </menu>
-           </div>
-           <hr/>
-          <div id="alert"></div>
-           <div id="loader"></div>
-           <hr/>
-           <div id="new_task" >
-               <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onFocus="clearField(this)"/>
-               <input type="button" id="btn_new_task" value="Adicionar"/>
-           </div>
-           <hr/>
-           <div id="tasks"></div>
-       </div>
-       <hr/>
-       <div id="footer">
-               <p><a href="#" title="Ajuda">Ajuda</a> | © 2011 <a href="http://douglasdoro.wordpress.com" title="Blog http://douglasdoro.wordpress.com" target="_blank">@douglasdoro</a> todos os direitos reservados.</p>
-       </div>
-    </body>
-</html>
-
-    
+<div id="new_task" >
+   <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onfocus="clearField(this)"/>
+   <input type="button" id="btn_new_task" value="Adicionar"/>
+</div>
+<hr/>
+<div id="tasks">
+</div>
+<div id="alert"></div>
+<div id="loader"></div>

@@ -7,21 +7,22 @@ Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/tasks.sqlite3')
 class Task < Sequel::Model
 end
 
+get('/login') {erb :login}
 get('/') {erb :index}
 
 get '/tasks' do 
     @tasks = Task.all
-    erb :tasks
+    erb :tasks, :layout => false
 end
 
 get '/tasks_complete' do
-    @tasks = Task.where(:complete => true).order(:date.desc).limit(10)
-    erb :tasks
+    @tasks = Task.where(:complete => true).order(:date.desc).limit(20)
+    erb :tasks, :layout => false
 end 
 
 get '/tasks_not_complete' do
     @tasks = Task.where(:complete => false).order(:date.desc).limit(20)
-    erb :tasks 
+    erb :tasks, :layout => false
 end
 
 post '/new_task/:description' do
