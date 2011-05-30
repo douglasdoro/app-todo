@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    width: 760px;
+    margin: 0 auto 0 auto;
+}
+
+
+#content {
+    border-top: 60px solid #fff;
+    min-height: 500px;
+    margin-top: 20px;
+}
+
+#header {
+    height: 60px;
+    margin-top: -60px;
+    border-bottom: 2px solid #000;
+}
+
+hr, #header ul, #new_task, .tasks div, #footer {
+    display: none;
+}
+
+#header h2 {
+    width: 140px;
+    height: 40px;
+    float: left;
+    margin: 15px 0 0 20px;
+    font: bold 28px Verdana, Arial, Sans-serif;
+    color: #000;
+}
+
+#tasks {
+    margin-top: 20px;
+    font: 14px Tahoma, Arial, Sans-serif;
+    letter-spacing: 1px;
+}
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + label {
+    border: 2px solid #000;
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.tasks{
+    width: 708px;
+    height: 24px;
+    margin: 10px 25px;
+    position: relative;
+}
+
+.tasks span{
+    position: absolute;
+    top: 1px;
+    left: 35px;
+}
+

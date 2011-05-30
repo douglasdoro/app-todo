@@ -1,5 +1,6 @@
 .*.swo
 .*.swp
+*.swp
 .*.swn
 .*.swm
 *.*~
