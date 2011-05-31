@@ -112,18 +112,35 @@ input:focus {
     margin-top: 25px;
 }
 
-#new_task input[type=button] {
-    display: none;
+#new_task span {
+    display: block;
+    width: 710px;
+    margin: 0 auto 0 auto;
 }
 
-#txt_new_task{
+#new_task #txt_new_task {
     display: block;
-    width: 669px;
+    width: 642px;
     height: 18px;
     background: url('/images/pen.png') no-repeat;
     padding: 4px 4px 4px 35px;
-    margin: 0 auto 0 auto;
     font-size: 16px;
+    float: left;
+}
+
+#new_task #btn_new_task {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url('/images/plus.png') no-repeat;
+    border: 1px solid #999;
+    border-left: none;
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+#new_task #btn_new_task:hover {
+    background: #fff url('/images/plus.png') no-repeat;
 }
 
 #new_task ul {
