@@ -24,6 +24,7 @@ $(function(){
                     newTask(task);  
                 }    
                 $("#txt_new_task").focus();
+                return false;
            });
     
     $('#done').click(function(){
@@ -39,6 +40,11 @@ $(function(){
     $('#all').click(function(){
            showTasks('/tasks');         
            return false;         
+    });
+
+    $("#print").click(function(){
+            window.print();
+            return false;
     });
 }); 
 
