@@ -1,9 +1,14 @@
 <div id="new_task" >
    <input type="text" id="txt_new_task" autocomplete="off" onblur="fillTaskText()" onfocus="clearField(this)"/>
    <input type="button" id="btn_new_task" value="Adicionar"/>
+    <ul>
+       <li><a href="#" title="pendentes" id="undone">pendentes</a></li>
+       <li><a href="#" title="concluídas" id="done">concluídas</a></li>
+    </ul>
 </div>
 <hr/>
 <div id="tasks">
 </div>
 <div id="alert"></div>
 <div id="loader"></div>
+<div id='no_task'></div>

@@ -31,6 +31,10 @@ hr, #header ul, #new_task, .tasks div, #footer {
     float: left;
     margin: 15px 0 0 20px;
     font: bold 28px Verdana, Arial, Sans-serif;
+}
+
+#header h2 a {
+    text-decoration: none;
     color: #000;
 }
 

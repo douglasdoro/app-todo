@@ -49,6 +49,7 @@ input:focus {
     -moz-box-shadow: 4px 4px 3px #522;
     min-height: 500px;
     margin-top: 20px;
+    position: relative;
 }
 
 /* header - headre and menu */
@@ -58,35 +59,41 @@ input:focus {
     margin-top: -60px;
 }
 
+#header a {
+    text-decoration: none;
+    color: #fff; 
+}
+
+#header a:hover {
+    color: #666; 
+}
+
 #header h2 {
     display: block;
-    width: 140px;
-    height: 40px;
     float: left;
-    margin: 15px 0 0 20px;
+    margin: 10px 0 0 20px;
     font: bold 28px Verdana, Arial, Sans-serif;
     color: #fff;    
 }
 
 #header ul {
+    display: block;
     float: right;
-    margin: 30px;
+    margin: 5px;
+    font: 10px Verdana, Arial, Sans-serif;
     color: #fff;
-    font: 14px Verdana, Arial, Sans-serif;
 }
 
-#header li {
-    display: inline;
-    margin-left: 5px;
+#header ul li {
+    float: left;
+    list-style: none;
 }
 
-#header li:hover {
-    text-decoration: none;
-    color: #666; 
-    cursor: pointer;
-}
+#header ul li a {
+    margin: 0 3px;
+} 
 
-/* new_task - box new task */
+/* new_task - box new taski and menu tasks */
 
 #new_task {
     margin-top: 25px;
@@ -106,10 +113,45 @@ input:focus {
     font-size: 16px;
 }
 
+#new_task ul {
+    display: none;
+    float:right;
+    margin: 8px 22px 0 0;
+}
+
+#new_task li {
+    display: block;
+    float: left;
+    list-style: none;
+}
+
+#new_task a {
+    display: block;
+    height: 18px;
+    font: 12px Verdana, Arial, Sans-serif;
+    text-decoration: none;
+    color: #666;
+}
+
+#new_task a:hover {
+    color: #e33f1e;
+}
+
+#new_task #done {
+    margin-left: 15px;
+    padding-left: 21px;
+    background: url('/images/checked.png') no-repeat 0 -3px;
+}
+
+#new_task #undone {
+    padding-left: 21px;
+    background: url('/images/unchecked.png') no-repeat 0 -3px;
+}
+
 /* box tasks*/ 
 
 #tasks {
-    margin-top: 20px;
+    margin-top: 40px;
     font: 12px Verdana, Arial, Sans-serif;
 }
 
@@ -153,8 +195,8 @@ input[type=checkbox]:checked + label {
 
 .tasks span{
     position: absolute;
-    top: 4px;
-    margin-left: 5px;
+    top: 3px;
+    left: 28px;
 }
 
 .options_task{
@@ -281,6 +323,10 @@ span.task_complete{
 #no_task{
     width: 300px;
     min-height: 10px;
-    margin: 180px auto 0 auto;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    margin-left: -150px;
     text-align: center;
+    font: 14px Verdana, Arial, Sans-serif;
 }
