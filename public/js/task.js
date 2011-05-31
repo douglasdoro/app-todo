@@ -27,15 +27,18 @@ $(function(){
            });
     
     $('#done').click(function(){
-            showTasks('/tasks_complete');         
+            showTasks('/tasks_complete');
+            return false;         
      });
    
     $('#undone').click(function(){
            showTasks('/tasks_not_complete');         
+            return false;         
      });
 
     $('#all').click(function(){
            showTasks('/tasks');         
+           return false;         
     });
 }); 
 
