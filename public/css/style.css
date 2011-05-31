@@ -360,3 +360,15 @@ span.task_complete{
     text-align: center;
     font: 14px Verdana, Arial, Sans-serif;
 }
+
+#beta {
+    width: 20px;
+    height: 80px;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    margin-top: -150px;
+    background: #800 url('/images/beta.png') no-repeat;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
