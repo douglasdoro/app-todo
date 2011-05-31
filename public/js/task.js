@@ -80,7 +80,6 @@ function newTask(task){
                 clearField("#txt_new_task");
                 if($("#no_task:visible")[0])
                 {   
-                     $("#no_task").html("");
                      $("#no_task").hide();
                      $("#new_task ul").show();
                 }
@@ -123,7 +122,7 @@ function deleteTask(objImput){
             if ($(".tasks:visible").size() == 1) 
             {
                 $("#new_task ul").hide();
-                $('#no_task').append("Não há Nenhuma tarefa no momento.").show();
+                $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
             }
         },
         error: function(){
@@ -181,12 +180,17 @@ function showTasks(url){
             success: function(data){
                    hiddenAjaxLoader();
                    if (data == '')
-                   {
-                       $("#new_task ul").hide();
-                       $('#no_task').append("Não há Nenhuma tarefa no momento.").show();
+                   {    
+                       if (url == '/tasks')
+                       {
+                            $("#new_task ul").hide();
+                       }
+
+                       $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
                    }
                    else
-                   { 
+                   {   
+                       $('#no_task').hide(); 
                        $('#tasks').append(data);
                        $("#new_task ul").show();
                    }
