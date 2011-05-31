@@ -82,6 +82,7 @@ input:focus {
     margin: 5px;
     font: 10px Verdana, Arial, Sans-serif;
     color: #fff;
+    position: relative;
 }
 
 #header ul li {
@@ -92,6 +93,18 @@ input:focus {
 #header ul li a {
     margin: 0 3px;
 } 
+
+#header ul li #print {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 0;
+    width: 20px;
+    height: 19px;
+    background: url('/images/print.gif') no-repeat;
+    text-indent: -999px;
+    overflow: hidden;
+}
 
 /* new_task - box new taski and menu tasks */
 
