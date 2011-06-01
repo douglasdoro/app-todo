@@ -2,33 +2,23 @@ var textTask= 'Digite uma nova tarefa aqui e aperte enter.';
 var errorCall= "Opa!. Por favor, tente novamente.";
 
 $(function(){
-    fillTaskText();
+    fillFieldNewTask();
+    
     showTasks('/tasks');
 
     $("#txt_new_task").keypress(function(event){
-        if (event.which == '13')
-        {
+        if (event.which == '13'){
             $("#btn_new_task").click();
         }
      });
 
     $("#btn_new_task").click(function(){
-                    newTask($("#txt_new_task").val());
-                });
+        newTask($("#txt_new_task").val());
+     });
     
-    $('#done').click(function(){
-            showTasks('/tasks_complete');
-            return false;         
-     });
-   
-    $('#undone').click(function(){
-           showTasks('/tasks_not_complete');         
-            return false;         
-     });
-
-    $('#all').click(function(){
-           showTasks('/tasks');         
-           return false;         
+    $(".links_status_task").click(function(){
+        showTasks(this.href);
+        return false;
     });
 
     $("#print").click(function(){
@@ -37,7 +27,7 @@ $(function(){
     });
 }); 
 
-function fillTaskText(){
+function fillFieldNewTask(){
     if ($("#txt_new_task").val() == '')
     {
         $("#txt_new_task").val(textTask);    
