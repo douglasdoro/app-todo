@@ -12,20 +12,9 @@ $(function(){
         }
      });
 
-    $("#btn_new_task").click(
-           function(){
-                var task = $("#txt_new_task").val();
-                if (task == '' || task == textTask)
-                {
-                    warning('Informe uma tarefa.');
-                }
-                else
-                {
-                    newTask(task);  
-                }    
-                $("#txt_new_task").focus();
-                return false;
-           });
+    $("#btn_new_task").click(function(){
+                    newTask($("#txt_new_task").val());
+                });
     
     $('#done').click(function(){
             showTasks('/tasks_complete');
@@ -72,6 +61,13 @@ function hiddenAjaxLoader(){
 }
 
 function newTask(task){
+   $("#txt_new_task").focus();
+    
+   if(task == '' || task == textTask){
+        warning('Informe uma tarefa.');
+        return;
+   }
+  
     $.ajax({
         type: 'POST',
         url: '/new_task/'+task,
