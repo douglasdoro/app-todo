@@ -1,5 +1,4 @@
 require "sinatra" 
-require "json"
 require 'sequel'
  
 Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/tasks.sqlite3')
@@ -8,6 +7,7 @@ class Task < Sequel::Model
 end
 
 get('/login') {erb :login}
+
 get('/') {erb :index}
 
 get '/tasks' do 
@@ -26,13 +26,12 @@ get '/tasks_not_complete' do
 end
 
 post '/new_task/:description' do
-    task = Task.where(:id =>
+    @task = Task.where(:id =>
         Task.insert(:description => params[:description],
                     :complete    => false,
                     :date        => Time.now)).first
      
-    content_type :json
-    task.values.to_json
+    erb :task, :layout => false 
 end
 
 put '/update_task/:id/:description' do

@@ -1,10 +1,21 @@
-var textTask= 'Digite uma nova tarefa aqui e aperte enter.';
-var errorCall= "Opa!. Por favor, tente novamente.";
+var app = {
+       message:    {
+                    error: "Oops! Por favor, tente novamente.",
+                    newTask: "Digite uma nova tarefa aqui e aperte enter.",
+                    fieldEmpty: "Opa! É preciso informar uma tarefa."
+                   },
+       fieldEmpty: function(){ warning(this.message.fieldEmpty)},           
+       warning:    function(){ warning(this.message.error)},
+       fillField:  function(){ fillFieldNewTask(this.message.newTask)},
+       clearField: function(){ clearField()},
+       showTasks:  function(){ showTasks('/tasks')}
+};
+
+
 
 $(function(){
-    fillFieldNewTask();
-    
-    showTasks('/tasks');
+    app.fillField();
+    app.showTasks();
 
     $("#txt_new_task").keypress(function(event){
         if (event.which == '13'){
@@ -14,6 +25,7 @@ $(function(){
 
     $("#btn_new_task").click(function(){
         newTask($("#txt_new_task").val());
+        $("#txt_new_task").focus();
      });
     
     $(".links_status_task").click(function(){
@@ -27,15 +39,16 @@ $(function(){
     });
 }); 
 
-function fillFieldNewTask(){
-    if ($("#txt_new_task").val() == '')
-    {
-        $("#txt_new_task").val(textTask);    
+/* comportamento da interface */
+
+function fillFieldNewTask(msg){
+    if ($("#txt_new_task").val() == ''){
+        $("#txt_new_task").val(msg);    
     }
 }
 
-function clearField(field){
-    $(field).val('');
+function clearField(){
+    $("#txt_new_task").val('');
 }
 
 function warning(error){
@@ -50,52 +63,61 @@ function hiddenAjaxLoader(){
     $('#loader').hide();
 }
 
+
+function showFormToEditTask(element){
+    var taskId = $(element).attr('itemid');
+    $('#txt_edit_task_'+taskId).val($.trim($('#span_'+taskId).text()));
+    $('#div_edit_task_'+taskId).css('display', 'block');
+    $('#txt_edit_task_'+taskId).focus(); 
+}
+
+function hiddenFormOfEditTask(element){
+    var taskId = $(element).attr('itemid');
+    $('#div_edit_task_'+taskId).css('display', 'none');
+}
+
+function managerTask(objCheck){
+    task = $(objCheck).attr("itemid");
+    if (objCheck.checked == true) {
+       doneTask(task);    
+    } else {
+        undoneTask(task); 
+    }
+}
+
+function appendTask(data){
+     clearField("#txt_new_task");
+     if($("#no_task:visible")[0]){
+         $("#no_task").hide();
+         $("#new_task ul").show();
+     }
+
+     $('#tasks').append(data);    
+}
+
+/* Chamadas Ajax */
+
 function newTask(task){
-   $("#txt_new_task").focus();
-    
-   if(task == '' || task == textTask){
-        warning('Informe uma tarefa.');
+    if(task == '' || task == app.message.newTask){
+        app.fieldEmpty();
         return;
-   }
+    }
   
     $.ajax({
         type: 'POST',
         url: '/new_task/'+task,
-        dataType: 'json',
-        success: function(data){
-                clearField("#txt_new_task");
-                if($("#no_task:visible")[0])
-                {   
-                     $("#no_task").hide();
-                     $("#new_task ul").show();
-                }
-                 appendTask(data);
-            },
-        error: function(){
-                warning(errorCall);
-            }  
+        success: function(data){ appendTask(data); },
+        error: function(){ warning(app.message.error); }
     });
 }
 
-function appendTask(data){
-    $('#tasks').append(    
-        "<div id='div_"+data.id+"'class='tasks' style='display:none' >" +
-   	    	"<input type='checkbox' id='cb_"+data.id+"' itemid='"+data.id+"' onclick='managerTask(this);'/>" +
-        	"<label for='cb_"+data.id+"'/>" +
-        	"<span id='span_"+data.id+"'>&nbsp;"+data.description+"</span>" +
-        	"<div class='options_task'>" +
-   	        	"<input type='image' src='/images/edit.png' class='btn_edit' itemid='"+data.id+"' onclick='showFormToEditTask(this);return false;'/>" +
-   	        	"<input type='image' src='/images/trash.png' class='btn_delete' itemid='"+data.id+"' onclick='deleteTask(this);return false;'/>" +
-        	"</div>" +
-            "<div id='div_edit_task_"+data.id+"' class='edit_task'>" +
-                "<input type='text' id='txt_edit_task_"+data.id+"' itemid='"+data.id+"' class='txt_edit_task' value=''/>" +
-                "<input type='button' class='btn_edit_ok' value='OK' itemid='"+data.id+"' onClick='updateTask(this);'/>" +                
-                "<input type='button' class='btn_edit_cancel' value='Cancelar' itemid='"+data.id+"' onClick='hiddenFormOfEditTask(this);return false;'/>" +
-            "</div>" +
-   	    "</div>");
-    
-    $("#div_"+data.id).fadeIn('slow');
-           
+function hideTask(task){
+    $('#cb_'+task).parent('div').fadeOut('slow');
+
+    if ($(".tasks:visible").size() == 1){
+        $("#new_task ul").hide();
+        $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
+    }
 }
 
 function deleteTask(objImput){
@@ -103,31 +125,13 @@ function deleteTask(objImput){
     $.ajax({
         type: 'DELETE', 
         url: '/delete_task/'+task,
-        success:function(){
-            $('#cb_'+task).parent('div').fadeOut('slow');
-            if ($(".tasks:visible").size() == 1) 
-            {
-                $("#new_task ul").hide();
-                $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
-            }
-        },
+        success: function(){ hideTask(task); },
         error: function(){
             warning(errorCall);
         }
     });
 }
 
-function managerTask(objCheck){
-    task = $(objCheck).attr("itemid");
-    if (objCheck.checked == true)
-    {
-       doneTask(task);    
-    }
-    else
-    {
-        undoneTask(task); 
-    }
-}
 
 function doneTask(task){
      $.ajax({
@@ -182,18 +186,6 @@ function showTasks(url){
                    }
             }
     });
-}
-
-function showFormToEditTask(element){
-    var taskId = $(element).attr('itemid');
-    $('#txt_edit_task_'+taskId).val($.trim($('#span_'+taskId).text()));
-    $('#div_edit_task_'+taskId).css('display', 'block');
-    $('#txt_edit_task_'+taskId).focus(); 
-}
-
-function hiddenFormOfEditTask(element){
-    var taskId = $(element).attr('itemid');
-    $('#div_edit_task_'+taskId).css('display', 'none');
 }
 
 function updateTask(element){
