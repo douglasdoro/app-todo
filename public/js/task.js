@@ -5,17 +5,20 @@ var app = {
                     fieldEmpty: "Opa! É preciso informar uma tarefa."
                    },
        fieldEmpty: function(){ warning(this.message.fieldEmpty)},           
-       warning:    function(){ warning(this.message.error)},
+       warningError:    function(){ warning(this.message.error)},
        fillField:  function(){ fillFieldNewTask(this.message.newTask)},
        clearField: function(){ clearField()},
-       showTasks:  function(){ showTasks('/tasks')}
 };
 
+var task = {
+       showTasks:  function(url){ tasks(url)}
+}
 
 
+/* Load Page */
 $(function(){
     app.fillField();
-    app.showTasks();
+    task.showTasks('/tasks');
 
     $("#txt_new_task").keypress(function(event){
         if (event.which == '13'){
@@ -27,9 +30,9 @@ $(function(){
         newTask($("#txt_new_task").val());
         $("#txt_new_task").focus();
      });
-    
+
     $(".links_status_task").click(function(){
-        showTasks(this.href);
+        task.showTasks(this.href);
         return false;
     });
 
@@ -56,6 +59,7 @@ function warning(error){
 }
 
 function showAjaxLoader(){
+    $('#tasks').empty();
     $('#loader').show();
 }
 
@@ -76,13 +80,22 @@ function hiddenFormOfEditTask(element){
     $('#div_edit_task_'+taskId).css('display', 'none');
 }
 
-function managerTask(objCheck){
+function alterStatusTask(objCheck){
     task = $(objCheck).attr("itemid");
     if (objCheck.checked == true) {
-       doneTask(task);    
+        setStatusTask('/done_task', task);    
     } else {
-        undoneTask(task); 
+        setStatusTask('/undone_task', task); 
     }
+}
+
+function checkUncheckTask(url, task){
+    if (url == '/done_task'){
+        $('#span_'+task).addClass('task_complete');
+        return;
+    } 
+    
+    $('#span_'+task).removeClass('task_complete'); 
 }
 
 function appendTask(data){
@@ -93,6 +106,30 @@ function appendTask(data){
      }
 
      $('#tasks').append(data);    
+}
+
+function hideTask(task){
+    $('#cb_'+task).parent('div').fadeOut('slow');
+
+    if ($(".tasks:visible").size() == 1){
+        $("#new_task ul").hide();
+        $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
+    }
+}
+
+function showTasks(data, url){
+     hiddenAjaxLoader();
+     if (data == ''){    
+         if (url == '/tasks'){
+              $("#new_task ul").hide();
+         }
+
+         $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
+         return;
+     } 
+         $('#no_task').hide(); 
+         $('#tasks').append(data);
+         $("#new_task ul").show();
 }
 
 /* Chamadas Ajax */
@@ -107,17 +144,8 @@ function newTask(task){
         type: 'POST',
         url: '/new_task/'+task,
         success: function(data){ appendTask(data); },
-        error: function(){ warning(app.message.error); }
+        error: function(){ app.warningError(); }
     });
-}
-
-function hideTask(task){
-    $('#cb_'+task).parent('div').fadeOut('slow');
-
-    if ($(".tasks:visible").size() == 1){
-        $("#new_task ul").hide();
-        $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
-    }
 }
 
 function deleteTask(objImput){
@@ -126,65 +154,25 @@ function deleteTask(objImput){
         type: 'DELETE', 
         url: '/delete_task/'+task,
         success: function(){ hideTask(task); },
-        error: function(){
-            warning(errorCall);
-        }
+        error: function(){ app.warningError(); }
     });
 }
 
-
-function doneTask(task){
+function setStatusTask(url,task){
      $.ajax({
         type: 'PUT',
-        url: '/done_task/'+task,
-        success:function(){
-            $('#span_'+task).addClass('task_complete');    
-        },
-        error: function(){
-            warning(errorCall);
-        } 
+        url: url +'/'+task,
+        success:function(){ checkUncheckTask(url, task) },
+        error: function(){ app.warningError(); }
     });
 }
 
-function undoneTask(task){
-     $.ajax({
-        type: 'PUT',
-        url: '/undone_task/'+task,
-        success:function(){
-                $('#span_'+task).removeClass('task_complete'); 
-        },
-        error: function(){
-            warning(errorCall);
-        } 
-    });
-}
-
-function showTasks(url){
+function tasks(url){
     $.ajax({
             type: 'GET',
             url: url,
-            beforeSend: function(){ 
-                    $('#tasks').empty();
-                    showAjaxLoader();
-                },
-            success: function(data){
-                   hiddenAjaxLoader();
-                   if (data == '')
-                   {    
-                       if (url == '/tasks')
-                       {
-                            $("#new_task ul").hide();
-                       }
-
-                       $('#no_task').html("").append("Não há Nenhuma tarefa no momento.").show();
-                   }
-                   else
-                   {   
-                       $('#no_task').hide(); 
-                       $('#tasks').append(data);
-                       $("#new_task ul").show();
-                   }
-            }
+            beforeSend: function(){ showAjaxLoader(); },
+            success: function(data){ showTasks(data, url); }
     });
 }
 
@@ -199,8 +187,6 @@ function updateTask(element){
             $('#span_'+taskId).text($.trim($('#txt_edit_task_'+taskId).val()));
                 hiddenFormOfEditTask(element);    
             },
-        error: function(){
-            warning(errorCall);
-        } 
+        error: function(){ app.warningError(); }
     });
 }

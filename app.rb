@@ -17,12 +17,12 @@ end
 
 get '/tasks_complete' do
     @tasks = Task.where(:complete => true).order(:date.desc).limit(20)
-    erb :tasks, :layout => false
+    erb :tasks, :layout => !request.xhr?
 end 
 
 get '/tasks_not_complete' do
     @tasks = Task.where(:complete => false).order(:date.desc).limit(20)
-    erb :tasks, :layout => false
+    erb :tasks, :layout => !request.xhr?
 end
 
 post '/new_task/:description' do
@@ -48,11 +48,13 @@ put '/done_task/:id' do
     Task.where(:id => params[:id]).update(
         :complete => true,
         :date     => Time.now) 
+    response.status
 end
 
 put '/undone_task/:id' do
     Task.where(:id => params[:id]).update(
         :complete => false,
         :date     => Time.now)
+    response.status
 end
 

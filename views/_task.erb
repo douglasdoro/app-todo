@@ -1,42 +1,42 @@
-    <div class="tasks">
-        <input type="checkbox"
-               <%="id='cb_#{task[:id]}'"%>
-               <%="itemid='#{task[:id]}'"%>
-               <%=task[:complete] ? "checked='checked'" : ''%> 
-               onclick="managerTask(this);" />
-        <label <%="for='cb_#{task[:id]}'"%>></label>       
+<div class="tasks">
+    <input type="checkbox"
+           <%="id='cb_#{task[:id]}'"%>
+           <%="itemid='#{task[:id]}'"%>
+           <%=task[:complete] ? "checked='checked'" : ''%> 
+           onclick="alterStatusTask(this);" />
+    <label <%="for='cb_#{task[:id]}'"%>></label>       
 
-        <span <%="id='span_#{task[:id]}'"%> <%=task[:complete] ? "class='task_complete'" : '' %>><%=task[:description]%></span>
-       
-        <div class="options_task">
-            <input type="image"
-                   src="/images/edit.png"
-                   class="btn_edit"
-                   alt="Editar"
-                   <%="itemid='#{task[:id]}'"%>
-                   onclick="showFormToEditTask(this);return false;" />
-            <input type="image"
-                   src="/images/trash.png"
-                   class="btn_delete"
-                   alt="Deletar"
-                   <%="itemid='#{task[:id]}'"%>
-                   onclick="deleteTask(this);return false;" />
-        </div>
-        <div id="div_edit_task_<%=task[:id]%>" class="edit_task">
-            <input type="text"
-                   id="txt_edit_task_<%=task[:id]%>"
-                   itemid="<%=task[:id]%>"
-                   class="txt_edit_task"
-                   value=""/>
-            <input type="button"
-                   class="btn_edit_ok"
-                   value="ok"
-                   <%="itemid='#{task[:id]}'"%>
-                   onclick="updateTask(this);"/>                
-             <input type="button"
-                   class="btn_edit_cancel"
-                   value="Voltar"
-                   <%="itemid='#{task[:id]}'"%>
-                   onclick="hiddenFormOfEditTask(this);return false;"/>
-        </div>
-   </div>
+    <span <%="id='span_#{task[:id]}'"%> <%=task[:complete] ? "class='task_complete'" : '' %>><%=task[:description]%></span>
+   
+    <div class="options_task">
+        <input type="image"
+               src="/images/edit.png"
+               class="btn_edit"
+               alt="Editar"
+               <%="itemid='#{task[:id]}'"%>
+               onclick="showFormToEditTask(this);return false;" />
+        <input type="image"
+               src="/images/trash.png"
+               class="btn_delete"
+               alt="Deletar"
+               <%="itemid='#{task[:id]}'"%>
+               onclick="deleteTask(this);return false;" />
+    </div>
+    <div id="div_edit_task_<%=task[:id]%>" class="edit_task">
+        <input type="text"
+               id="txt_edit_task_<%=task[:id]%>"
+               itemid="<%=task[:id]%>"
+               class="txt_edit_task"
+               value=""/>
+        <input type="button"
+               class="btn_edit_ok"
+               value="ok"
+               <%="itemid='#{task[:id]}'"%>
+               onclick="updateTask(this);"/>                
+         <input type="button"
+               class="btn_edit_cancel"
+               value="Voltar"
+               <%="itemid='#{task[:id]}'"%>
+               onclick="hiddenFormOfEditTask(this);return false;"/>
+    </div>
+</div>
